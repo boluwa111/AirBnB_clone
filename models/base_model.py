@@ -1,4 +1,3 @@
-
 #! /usr/bin/python
 
 from uuid import uuid4
