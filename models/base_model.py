@@ -28,6 +28,6 @@ class BaseModel:
         """Returns a dictionary representation of the object."""
         dict_ = self.__dict__.copy()
         dict_["__class__"] = self.__class__.__name__
-        dict_["created_at"] = dict_["created_at"].isoformat()
-        dict_["updated_at"] = dict_["updated_at"].isoformat()
+        dict_["created_at"] = dict_["created_at"].isoformat("%Y-%m-%dT%H:%M:%S.%f")
+        dict_["updated_at"] = dict_["updated_at"].isoformat("%Y-%m-%dT%H:%M:%S.%f")
         return dict_
