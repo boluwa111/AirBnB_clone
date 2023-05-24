@@ -1,17 +1,16 @@
-<<<<<<< HEAD
 #! /bin/usr/python3
 
 from uuid import uuid4
-=======
+
 #! /usr/bin/python
 
 import uuid
->>>>>>> 47f563e43d3a2bc16bed872fb565b9933c2fb2ee
+
 from datetime import datetime
 
 
 class BaseModel:
-<<<<<<< HEAD
+
     """Base model class."""
 
     id: str
@@ -30,12 +29,12 @@ class BaseModel:
     def __init__(self):
         """Initialize a new BaseModel instance."""
         self.id = str(uuid.uuid4())
->>>>>>> 47f563e43d3a2bc16bed872fb565b9933c2fb2ee
+
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 
     def __str__(self):
-<<<<<<< HEAD
+
         return "[{}] ({}) {}".format(
             self.__class__.__name__, self.my_number, self.__dict__
         )
@@ -49,7 +48,7 @@ class BaseModel:
         dict_["__class__"] = self.__class__.__name__
         dict_["created_at"] = dict_["created_at"].isoformat(
             )
-=======
+
         """Return a string representation of the object."""
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
@@ -62,6 +61,6 @@ class BaseModel:
         dict_ = self.__dict__.copy()
         dict_["__class__"] = self.__class__.__name__
         dict_["created_at"] = dict_["created_at"].isoformat()
->>>>>>> 47f563e43d3a2bc16bed872fb565b9933c2fb2ee
+
         dict_["updated_at"] = dict_["updated_at"].isoformat()
         return dict_
