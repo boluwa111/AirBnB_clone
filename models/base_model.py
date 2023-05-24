@@ -19,7 +19,7 @@ class BaseModel:
 
     def __init__(self):
         self.my_number = str(uuid4())
-=======
+
     """Base class for all other models."""
 
     id: str = None
