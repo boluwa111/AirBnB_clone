@@ -1,19 +1,11 @@
 #! /bin/usr/python3
 
-from uuid import uuid4
+import uuid
 from datetime import datetime
 
 
 class BaseModel:
 
-    """Base model class."""
-
-    id: str
-    created_at: datetime
-    updated_at: datetime
-
-    def __init__(self):
-        self.my_number = str(uuid4())
 
     """Base class for all other models."""
 
@@ -33,19 +25,6 @@ class BaseModel:
         return "[{}] ({}) {}".format(
             self.__class__.__name__, self.my_number, self.__dict__
         )
-
-    def save(self):
-        self.updated_at = datetime.now()
-
-    def to_dict(self):
-        """Returns a dictionary representation of the object."""
-        dict_ = self.__dict__.copy()
-        dict_["__class__"] = self.__class__.__name__
-        dict_["created_at"] = dict_["created_at"].isoformat(
-            )
-
-        """Return a string representation of the object."""
-        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """Update the updated_at attribute."""
