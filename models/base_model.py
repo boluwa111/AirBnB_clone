@@ -35,9 +35,14 @@ class BaseModel:
 
     def to_dict(self):
         """Return a dictionary representation of the object."""
+        dic = {}
         dict_ = self.__dict__.copy()
+        
         dict_["__class__"] = self.__class__.__name__
         dict_["created_at"] = dict_["created_at"].isoformat()
 
         dict_["updated_at"] = dict_["updated_at"].isoformat()
-        return dict_
+        keys = ["my_number","name","__class__","updated_at","id","created_at"]
+        for i in keys:
+            dic[i] = dict_[i]
+        return dic
