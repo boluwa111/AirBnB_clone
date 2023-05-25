@@ -1,11 +1,6 @@
 #! /bin/usr/python3
 
 from uuid import uuid4
-
-#! /usr/bin/python
-
-import uuid
-
 from datetime import datetime
 
 
