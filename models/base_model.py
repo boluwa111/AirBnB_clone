@@ -15,15 +15,18 @@ class BaseModel:
 
     def __init__(self):
         """Initialize a new BaseModel instance."""
-        self.id = str(uuid.uuid4())
-
-        self.created_at = datetime.now()
+        
+        self.my_number = None
+        self.name = None
         self.updated_at = datetime.now()
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        
 
     def __str__(self):
 
         return "[{}] ({}) {}".format(
-            self.__class__.__name__, self.my_number, self.__dict__
+            self.__class__.__name__, self.id, self.__dict__
         )
 
     def save(self):
