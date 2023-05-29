@@ -1,33 +1,32 @@
-
 import unittest
-import uuid
+from uuid import UUID
 from datetime import datetime
+from models.base_model import BaseModel
 
-
-class BaseModelTest(unittest.TestCase):
-
+class TestBaseModel(unittest.TestCase):
     def test_init(self):
-        """Test the `__init__` method."""
-        model = BaseModel()
-        self.assertEqual(model.id, str(uuid.uuid4()))
-        self.assertEqual(model.created_at, datetime.now())
-        self.assertEqual(model.updated_at, datetime.now())
-
-    def test_str(self):
-        """Test the `__str__` method."""
-        model = BaseModel()
-        self.assertEqual(str(model), "[BaseModel] ({}) {}".format(model.__class__.__name__, model.id, model.__dict__))
+        model = BaseModel(name="My_Model", my_number=42)
+        self.assertIsInstance(model.id, UUID)
+        self.assertIsInstance(model.created_at, datetime)
+        self.assertIsInstance(model.updated_at, datetime)
+        self.assertEqual(model.name, "My_Model")
+        self.assertEqual(model.my_number, 42)
 
     def test_save(self):
-        """Test the `save` method."""
         model = BaseModel()
+        created_at = model.created_at
         model.save()
-        self.assertNotEqual(model.updated_at, datetime.now())
+        self.assertNotEqual(model.updated_at, created_at)
 
     def test_to_dict(self):
-        """Test the `to_dict` method."""
-        model = BaseModel()
-        dic = model.to_dict()
-        self.assertEqual(dic["__class__"], model.__class__.__name__)
-        self.assertEqual(dic["created_at"], model.created_at.isoformat())
-        self.assertEqual(dic["updated_at"], model.updated_at.isoformat())
+        model = BaseModel(name="My_Model", my_number=42)
+        data = model.to_dict()
+        self.assertIsInstance(data, dict)
+        self.assertEqual(data["id"], str(model.id))
+        self.assertEqual(data["created_at"], model.created_at.isoformat())
+        self.assertEqual(data["updated_at"], model.updated_at.isoformat())
+        self.assertEqual(data["name"], "My_Model")
+        self.assertEqual(data["my_number"], 42)
+
+if __name__ == '__main__':
+    unittest.main()
