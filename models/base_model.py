@@ -1,4 +1,4 @@
-t#! /bin/usr/python3
+#! /bin/usr/python3
 
 from uuid import uuid4
 from datetime import datetime
