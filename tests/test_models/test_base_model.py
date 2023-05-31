@@ -1,4 +1,4 @@
-#! /bin/usr/python3
+#! usr/python3
 
 import unittest
 from models.base_model import BaseModel
