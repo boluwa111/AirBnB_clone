@@ -1,16 +1,12 @@
-#! /bin/usr/python3
+#! /usr/bin/python3
 
 from uuid import uuid4
 from datetime import datetime
-from models.__init__ import storage
+from __init__ import storage
 
 
 class BaseModel:
     """Base class for all other models."""
-
-    id: str
-    created_at: datetime
-    updated_at: datetime
 
     def __init__(self, *args, **kwargs):
         self.name = None
@@ -27,7 +23,7 @@ class BaseModel:
             storage.new(self)
 
     def __str__(self):
-        return f"[{self.__class__.__name__}] ({self.id}) {self.to_dict()}"
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.to_dict())
 
     def save(self):
         """Updates the public instance attribute `updated_at` with the current datetime."""
